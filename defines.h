@@ -23,7 +23,7 @@
 
 //Only edit the below!
 #define PLUGIN_FILE_VERSION_STRING_MAJOR	1   //Please do not edit this line manually, see BinaryVersioning.qs (145314599).
-#define PLUGIN_FILE_VERSION_STRING_MINOR	1   //Please do not edit this line manually, see BinaryVersioning.qs (145314599).
+#define PLUGIN_FILE_VERSION_STRING_MINOR	0   //Please do not edit this line manually, see BinaryVersioning.qs (145314599).
 #define PLUGIN_FILE_VERSION_STRING_REVISION	0   //Please do not edit this line manually, see BinaryVersioning.qs (145314599).
 #define PLUGIN_FILE_VERSION_STRING_BUILD	1   //Please do not edit this line manually, see BinaryVersioning.qs (145314599).
 #define PLUGIN_PRODUCT_VERSION_STRING_MAJOR	1   //Please do not edit this line manually, see BinaryVersioning.qs (145314599).
