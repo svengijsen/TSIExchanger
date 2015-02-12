@@ -27,6 +27,7 @@
 #include <QtWidgets>
 #include <Windows.h>
 #include <QDialog>
+#include <QTextDocument>
 
 class TSIExchanger_Dialog : public QDialog, private Ui::TSIExchanger_DialogClass
 {
@@ -39,6 +40,8 @@ public:
 private:
 	Ui::TSIExchanger_DialogClass ui;
 	void cleanUp();
+
+	QTextDocument *doc;
 	
 private slots:
 	void on_cancelButton_clicked();

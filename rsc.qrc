@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/data">
+    <qresource prefix="/dataTSI">
         <file>html/NetworkPlugin_guide_files/image001.png</file>
         <file>html/NetworkPlugin_guide_files/image002.png</file>
         <file>html/NetworkPlugin_guide_files/image003.png</file>
@@ -8,6 +8,6 @@
         <file>html/NetworkPlugin_guide_files/image006.png</file>
         <file>html/NetworkPlugin_guide_files/image007.png</file>
         <file>html/NetworkPlugin_guide_files/image008.png</file>
-        <file>html/NetworkPlugin_guide.htm</file>
+        <file>html/NetworkPlugin_guide_v100.htm</file>
     </qresource>
 </RCC>

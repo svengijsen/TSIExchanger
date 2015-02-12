@@ -192,9 +192,6 @@
   <ItemGroup>
     <None Include="licenseHeader.licenseheader" />
     <None Include="TSIExchanger.json" />
-    <None Include="html\NetworkPlugin_guide.htm">
-      <Filter>Resource Files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="html\NetworkPlugin_guide_files\image001.png">

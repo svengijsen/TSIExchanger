@@ -1,0 +1,106 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>TSI Exchanger Plugin</title>
+</head>
+
+<body>
+<h1>The Network Access Plugin</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(v1.7)<span lang="EN-US"> </span></h1>
+<p>The  network interface opens custom access to data that is internally used by  Turbo-Satori (TSI) during and after real-time processing including information  of ROI, design matrix, (pre-processed) raw data and statistical information  inclusive the content of the design matrix, beta maps and contrast t-maps. This  plugin allows to perform additional operations and calculations outside the  TSI.<span lang="EN-US"> </span></p>
+<p>Well  defined access queries are used to get access to the data via a TCP connection.  Therefore a server implementation allows to get access to the whole data that  is also provided by the plugin interface during and after the real-time processing.<span lang="EN-US"> </span></p>
+<p>A  server client approach is used to get access to the data at any time. Therefore  the server provides all features to get access to the data in real-time while  running the analysis.<span lang="EN-US"> </span></p>
+<p>Send  a data specific query to get the requested information from the server.<span lang="EN-US"> </span></p>
+<h1>Connect to the server<span lang="EN-US"> </span></h1>
+<p>A connection to the server could be established  through a TCP socket implementation. At first the specific  server port has to be defined in the plugin. After that the IP of the server  will be displayed in the plugin window. The ports range from 1 to 65535 but the first  1024 well-known ports or system ports are used by system processes and need superuser privileges on Unix-like systems to bind a network  socket to it. Be sure to use a TCP socket to connect the server.<span lang="EN-US"> </span></p>
+<p>The  plugin uses two different sockets. One to receive and answer the queries from  the client and one to send execution information from the TSI. To specify the  socket to use send a (&quot;Request Socket&quot;) char array for the query socket or a (&quot;Execute Socket&quot;) char array for the  execution information socket (prepend the size of the array as a 4 byte  unsigned integer for all char arrays and end the array with a NUL [\0]).  Include the specific char array into a byte array and insert as the first  element the size of the byte array as an 8 byte signed 64bit integer. An  example byte based representation is shown below:<span lang="EN-US"> </span></p>
+<p>&nbsp;<span lang="EN-US"> </span></p>
+<p><img src="NetworkPlugin_guide_files/image001.png" alt="" width="665" height="18" id="_x0000_i1030"><span lang="EN-US"> </span></p>
+<p><img src="NetworkPlugin_guide_files/image002.png" alt="" width="665" height="18" id="_x0000_i1029"><span lang="EN-US"> </span></p>
+<p>&nbsp;<span lang="EN-US"> </span></p>
+<p>If  the request is wrong the connection will be closed. Insert a short delay from  around 0.5 seconds between the different socket connection requests to be  ensure that the server is listening for a new connection.<span lang="EN-US"> </span></p>
+<p>After  the connection is completely established the data can be directly accessed from  TSI. Only ask for data that is already available in TSI, otherwise an error  message will be returned! <span lang="EN-US"> </span></p>
+<p>&nbsp;<span lang="EN-US"> </span></p>
+<p>All  data that is send and received is in <b>big-endian</b> (<i>network byte) </i><b>byte order</b>.<span lang="EN-US"> </span></p>
+<h1>Access the data<span lang="EN-US"> </span></h1>
+<p>A  query with the included request of the specific data must be send to the server  to access the data from the TSI. Every query is defined on the next pages of  this guide.<span lang="EN-US"> </span></p>
+<p>A  query has to be constructed as a byte array where the first element is a  definition of the size of the byte array as an 8 byte signed 64bit integer.<span lang="EN-US"> </span></p>
+<p>The  second entry defines the type of query as a char array. After that follows the  specific query definitions, for example the time point from which to get the  data. Only ask for data that are already available in the TSI otherwise an  error string (&quot;Wrong request!&quot;) will be returned.<span lang="EN-US"> </span></p>
+<p><img src="NetworkPlugin_guide_files/image003.png" alt="" width="665" height="19" id="_x0000_i1028"><span lang="EN-US"> </span></p>
+<p>If  the query consists of more than one parameter, attach the other parameters to  the query and store it in the byte array.<span lang="EN-US"> </span></p>
+<p>You  will receive a byte array with the respective content as answer. (The first 8  byte of the byte array represents the size of the received byte array as  unsigned 64bit integer.) As an example how a definition of the byte array  should look like, see the &ldquo;tGetCurrentTimePoint&rdquo;  example below (send and receive).<span lang="EN-US"> </span></p>
+<p><img src="NetworkPlugin_guide_files/image004.png" alt="" width="666" height="18" id="_x0000_i1027"><span lang="EN-US"> </span></p>
+<p><img src="NetworkPlugin_guide_files/image005.png" alt="" width="666" height="18" id="_x0000_i1026"><span lang="EN-US"> </span></p>
+<h1>ExecuteTimePoint calls<span lang="EN-US"> </span></h1>
+<p>Whenever new data is available a specific  information will be send to the client. The call is </a>ExecuteTimePoint. The ExecuteTimePoint  call will be send whenever new pre-processed data is available. This invocation  consists of an at least 14 byte large char array followed by an integer representing  the current point in time of the current TSI processing. Both data will be send  as a byte array(The first 8 byte of  the byte array represents the size of the received byte array as signed 64bit  integer)</a> <span lang="EN-US"> </span></p>
+<p>&nbsp;<span lang="EN-US"> </span></p>
+<h1>Wrong requests<span lang="EN-US"> </span></h1>
+<p>Whenever the user sends a wrong query (for  example asked for a time point that has not been processed yet) a wrong request  information will be send to the client. The first part of the information is  the definition that a wrong request was asked. After that follows the description  which specific part of the query is </a>wrong. The client receives a 14  byte char array (&ldquo;Wrong request!&rdquo;) followed by an char  array including the respective error. Keep in mind that this data will also be  send in a byte array. (The first 8 byte of the byte array represents the size of the  received byte array as unsigned 64bit integer and before each char array the  specific length as a 4byte unsigned integer.)<span lang="EN-US"> </span></p>
+<p><img src="NetworkPlugin_guide_files/image006.png" alt="" width="665" height="34" id="_x0000_i1025"><span lang="EN-US"> </span></p>
+<b><br clear="all">
+</b>
+<p>&nbsp;</p>
+<h1>Basic Project Info<span lang="EN-US"> </span></h1>
+<p>Send:<b> </b><b>tGet</b><b>CurrentTimePoint</b> <span lang="EN-US"> </span></p>
+<p>Receive:<b> </b>int<b> </b>CurrentTimePoint<span lang="EN-US"> </span></p>
+<p>Provides the number of the  currently processed step during real-time processing as an integer. Note that  this function is 1-based, i.e. when the first step is processed the function  returns &quot;1&quot; not &quot;0&quot;; this is important when the return  value is used to access time-related information; in this case subtract &quot;1&quot;  from the returned value.</a> <span lang="EN-US"> </span></p>
+<p>&nbsp;<span lang="EN-US"> </span></p>
+<p><a name="__DdeLink__146_17800528041"></a></a>Send: <b>tGetNrOfChannels</b><span lang="EN-US"> </span></p>
+<p>Receive<a name="__DdeLink__178_1780052804">:</a> <b> </b><a name="__DdeLink__388_1780052804"></a>int<b> </b>NrOfChannels<span lang="EN-US"> </span></p>
+<p><a name="__DdeLink__309_1780052804">Provides  the number of channels available in the current setup of the </a>NIRx device. Use this value as the  upper bound when looping through all channels.</p>
+<p>&nbsp;</p>
+<p>Send: <b>tGetValuesFeedbackFolder</b><span lang="EN-US"> </span></p>
+<p><a name="__DdeLink__339_1780052804">Receive</a>: char[513]<b> </b>cValuesFeedbackFolder<span lang="EN-US"> </span></p>
+<p>Provides the path of the feedback folder for calculated neurofeedback values as a C string; note that the provided  pointer must point to a pre-allocated array that is large enough for the  returned path (a buffer of 513 bytes is recommended). The values feedback  folder can be used to store the result of custom calculations. It is located  under the folder containing the protocol specified prior to starting real-time processing  and is usually named &ldquo;NeurofeedbackValues&quot;. </p>
+<p>&nbsp;</p>
+<p>Send: <b>tGetImagesFeedbackFolder</b><span lang="EN-US"> </span></p>
+<p>Receive: char[513]<b> </b>cImagesFeedbackFolder<span lang="EN-US"> </span></p>
+<p>Provides the path of the feedback folder for calculated neurofeedback values as a C string; note that the provided  pointer must point to a pre-allocated array that is large enough for the  returned path (a buffer of 513 bytes is recommended). The values feedback  folder can be used to store the result of custom calculations. It is located  under the folder containing the protocol specified prior to starting real-time processing  and is usually named &ldquo;NeurofeedbackValues&quot;. </p>
+<br clear="all">
+<p>&nbsp;</p>
+<h1>Selected Channels Info<span lang="EN-US"> </span></h1>
+<p>&nbsp;<span lang="EN-US"> </span></p>
+<p>Send: <b>tGetNrOfSelectedChannels</b><span lang="EN-US"> </span></p>
+<p>Receive:</a> </a>int   NrOfSelectedChannels<span lang="EN-US"> </span></p>
+<p>Provides  the number of channels that are currently selected in the GUI. When processing  selected channels (e.g. to average their signals), this function must be called  at each time point since it can change anytime. Inspect the provided </a>ExamplePlugin code for more details</p>
+<p>&nbsp;</p>
+<p>Send: <b>tGetSelectedChannels</b><span lang="EN-US"> </span></p>
+<p><a name="__DdeLink__1607_664897814"></a></a>Receive: int<b> </b>SelectedChannels<span lang="EN-US"> </span></p>
+<p>Provides a pointer to an array containing the indices of the currently  selected channels. Use the number returned by the &ldquo;tGetNrOfSelectedChannels&rdquo;  as an upper bound when looping through this array. This is important since the  size of the referenced array changes dynamically depending on the number of  channels that are currently selected in the GUI. Inspect the provided ExamplePlugin code for more details.<b><br clear="all">
+</b>&nbsp; </p>
+<p>Get Raw Data&nbsp;<span lang="EN-US"> </span></p>
+<p>Send: <b>tGetRawDataScaleFactor</b></p>
+<p>Receive:  float RawDataScaleFactor<span lang="EN-US"> </span></p>
+<p><span lang="EN-US">Provides the scale factor set in the GUI to multiply  the raw data wavelength values. While not</span></p>
+<p><span lang="EN-US">necessary</span><span lang="EN-US">, It is  recommended that accessed data (see below) is multiplied by this value to be</span></p>
+<p><span lang="EN-US">compatible</span><span lang="EN-US"> with the values  displayed in the GUI. Inspect the provided ExamplePlugin  code for more details.</span></p>
+<p><span lang="EN-US">&nbsp;</span></p>
+<p>Send: <b>tGetRawDataWL1</b></p>
+<p>Receive:  float<b> </b>RawDataWL1<span lang="EN-US"> </span></p>
+<p><span lang="EN-US">Provides the value of the raw data for wavelength 1  for the specified channel &ldquo;ch&rdquo; and the specified time  point &ldquo;frame&rdquo;. If the current values are of interest, &ldquo;frame&rdquo; should be set to  one less the value obtained by the &ldquo;tGetCurrentTimePoint()&rdquo; function. To be compatible with the values displayed in  the GUI, it is recommended to multiply the retrieved value by the scale value  obtained from the</span></p>
+<p><span lang="EN-US">&ldquo;tGetRawDataScaleFactor()&rdquo; function.</span></p>
+<p><span lang="EN-US">&nbsp;</span></p>
+<p>Send: <b>tGetRawDataWL2</b></p>
+<p>Receive:  float<b> </b>RawDataWL2<span lang="EN-US"> </span></p>
+<p><span lang="EN-US">Provides the value of the raw data for wavelength 2  for the specified channel &ldquo;ch&rdquo; and the specified time  point &ldquo;frame&rdquo;. If the current values are of interest, &ldquo;frame&rdquo; should be set to  one less the value obtained by the &ldquo;tGetCurrentTimePoint()&rdquo; function. To be compatible with the values displayed in  the GUI, it is recommended to multiply the retrieved value by the scale value  obtained from the &ldquo;tGetRawDataScaleFactor()&rdquo; function.</span></p>
+<span lang="EN-US"><br clear="all">
+</span>
+<p><span lang="EN-US">&nbsp;</span></p>
+<p>Get Preprocessed  Data&nbsp;<span lang="EN-US"> </span></p>
+<p>Send: <b>tIsDataOxyDeoxyConverted</b></p>
+<p>Receive:  int DataOxyDeoxyConverted<span lang="EN-US"> </span></p>
+<p><span lang="EN-US">Returns integer &ldquo;1&rdquo; if oxygenated/deoxygeneated  values are requested in the GUI (default) and if concentration values can be  calculated, i.e. after the specified baseline period has passed.</span></p>
+<p><span lang="EN-US">&nbsp;</span></p>
+<p><span lang="EN-US">float</span><span lang="EN-US"> tGetOxyDataScaleFactor()</span></p>
+<p>Send: <b>tGetOxyDataScaleFactor</b></p>
+<p>Receive:  float OxyDataScaleFactor<span lang="EN-US"> </span></p>
+<p><span lang="EN-US">Provides the scale factor set in the GUI to multiply  the preprocessed oxy/deoxy data values. While not  necessary, It is recommended that accessed oxy/deoxy concentration data (see below) is multiplied by this  value to be compatible with the values displayed in the GUI. Inspect the  provided ExamplePlugin code for more details.</span></p>
+<p><span lang="EN-US">&nbsp;</span></p>
+<p>Send: <b>tGetDataOxy</b></p>
+<p>Receive:  float tGetDataOxy<span lang="EN-US"> </span></p>
+<p><span lang="EN-US">Provides the value of the oxygenated data for the  specified channel &ldquo;ch&rdquo; and the specified time point &ldquo;frame&rdquo;.  If the current values are of interest, &ldquo;frame&rdquo; should be set to one less the  value obtained by the &ldquo;tGetCurrentTimePoint()&rdquo; function. To be compatible with the values displayed in  the GUI, it is recommended to multiply the retrieved value by the scale value  obtained from the &ldquo;tGetOxyDataScaleFactor()&rdquo; function.</span></p>
+<p><span lang="EN-US">&nbsp;</span></p>
+<p>Send: <b>tGetDataDeoxy</b></p>
+<p>Receive:  float DataDeoxy<span lang="EN-US"> </span></p>
+<p><span lang="EN-US">Provides the value of the deoxygenated data for the  specified channel &ldquo;ch&rdquo; and the specified time point  &ldquo;frame&rdquo;. If the current values are of interest, &ldquo;frame&rdquo; should be set to one  less the value obtained by the &ldquo;tGetCurrentTimePoint()&rdquo; function. To be compatible with the values displayed in  the GUI, it is recommended to multiply the retrieved value by the scale value  obtained from the &ldquo;tGetOxyDataScaleFactor()&rdquo; function</span></p>
+</body>
+</html>
