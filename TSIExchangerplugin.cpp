@@ -28,7 +28,7 @@ TSIExchangerPlugin::TSIExchangerPlugin(QObject *parent)
 {
 	TSIExchangerObject = new TSIExchanger(parent);
 	TSIExchangerDiagObject = new TSIExchanger_Dialog();	
-	strPluginInformation = QString(PLUGIN_INTERNAL_NAME) + " Plugin" + "(v" + PLUGIN_FILE_VERSION_STRING + ")" + " by " + PLUGIN_AUTHOR_NAME;
+	strPluginInformation = QString(PLUGIN_INTERNAL_NAME) + " Plugin" + "(v" + PLUGIN_FILE_VERSION_STRING + ")";// +" by " + PLUGIN_AUTHOR_NAME;
 }
 
 TSIExchangerPlugin::~TSIExchangerPlugin()
