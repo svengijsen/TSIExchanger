@@ -148,6 +148,9 @@
     <ClCompile Include="..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\GeneratedFiles\qrc_rsc.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\GeneratedFiles\qrc_TSIExchanger.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h">
@@ -188,10 +191,25 @@
     <CustomBuild Include="TSIExchanger_dialog.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="TSIExchanger.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <None Include="licenseHeader.licenseheader" />
     <None Include="TSIExchanger.json" />
+    <None Include="resources\TSIExchangerplugin_Win32_Debug.ini">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\TSIExchangerplugin_Win32_Release.ini">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\TSIExchangerplugin_x64_Debug.ini">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\TSIExchangerplugin_x64_Release.ini">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="html\NetworkPlugin_guide_files\image001.png">
