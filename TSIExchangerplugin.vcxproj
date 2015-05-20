@@ -187,6 +187,8 @@
 
 xcopy "$(TargetPath)" "$(BRAINSTIM_HOME)\Install\plugins\$(Platform)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)scripts\QScriptExample_TSIExchangerPlugin.qs" "$(BRAINSTIM_HOME)\Install\Examples\Plugins\$(ProjectName)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)resources\$(ProjectName)_$(Platform)_$(Configuration).ini" "$(BRAINSTIM_HOME)\Install\Plugins\$(Platform)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 
@@ -260,6 +262,8 @@ echo POSTBUILDSTEP for $(ProjectName) COMPLETED OK
 
 xcopy "$(TargetPath)" "$(BRAINSTIM_HOME)\Install\plugins\$(Platform)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)scripts\QScriptExample_TSIExchangerPlugin.qs" "$(BRAINSTIM_HOME)\Install\Examples\Plugins\$(ProjectName)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)resources\$(ProjectName)_$(Platform)_$(Configuration).ini" "$(BRAINSTIM_HOME)\Install\Plugins\$(Platform)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 
@@ -329,6 +333,8 @@ echo POSTBUILDSTEP for $(ProjectName) COMPLETED OK
       <Command>echo POSTBUILDSTEP for $(ProjectName)
 
 xcopy "$(TargetPath)" "$(BRAINSTIM_HOME)\Install\plugins\$(Platform)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)scripts\QScriptExample_TSIExchangerPlugin.qs" "$(BRAINSTIM_HOME)\Install\Examples\Plugins\$(ProjectName)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)resources\$(ProjectName)_$(Platform)_$(Configuration).ini" "$(BRAINSTIM_HOME)\Install\Plugins\$(Platform)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
@@ -402,6 +408,8 @@ echo POSTBUILDSTEP for $(ProjectName) COMPLETED OK
 
 xcopy "$(TargetPath)" "$(BRAINSTIM_HOME)\Install\plugins\$(Platform)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)scripts\QScriptExample_TSIExchangerPlugin.qs" "$(BRAINSTIM_HOME)\Install\Examples\Plugins\$(ProjectName)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)resources\$(ProjectName)_$(Platform)_$(Configuration).ini" "$(BRAINSTIM_HOME)\Install\Plugins\$(Platform)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 
@@ -439,6 +447,8 @@ echo POSTBUILDSTEP for $(ProjectName) COMPLETED OK
 
 xcopy "$(TargetPath)" "$(BRAINSTIM_HOME)\Install\plugins\$(Platform)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)scripts\QScriptExample_TSIExchangerPlugin.qs" "$(BRAINSTIM_HOME)\Install\Examples\Plugins\$(ProjectName)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)resources\$(ProjectName)_$(Platform)_$(Configuration).ini" "$(BRAINSTIM_HOME)\Install\Plugins\$(Platform)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 
@@ -475,6 +485,8 @@ echo POSTBUILDSTEP for $(ProjectName) COMPLETED OK
       <Command>echo POSTBUILDSTEP for $(ProjectName)
 
 xcopy "$(TargetPath)" "$(BRAINSTIM_HOME)\Install\plugins\$(Platform)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)scripts\QScriptExample_TSIExchangerPlugin.qs" "$(BRAINSTIM_HOME)\Install\Examples\Plugins\$(ProjectName)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)resources\$(ProjectName)_$(Platform)_$(Configuration).ini" "$(BRAINSTIM_HOME)\Install\Plugins\$(Platform)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
