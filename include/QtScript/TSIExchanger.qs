@@ -13,19 +13,9 @@ BrainStim.clearOutputWindow("TSIExchanger");
 		BrainStim.write2OutputWindow("***ERROR***: The script plugin class named 'TSIExchanger' is not available, probably due to a missing plugin?", "TSIExchanger");
 	
 //Public Property Functions
-	RealTimeFeedback.__proto__.executePreStep = function(nTimePoint)
+	RealTimeFeedback.__proto__.executeTimePoint = function(nTimePoint)
 	{
-		BasicExperiment.LogFunctionSignature("TSIExchanger","executePreStep", arguments, false);
-	}
-
-	RealTimeFeedback.__proto__.executePostStep = function(nTimePoint)
-	{
-		BasicExperiment.LogFunctionSignature("TSIExchanger","executePostStep", arguments, false);
-	}
-	
-	RealTimeFeedback.__proto__.executePostRun = function(nTimePoint)
-	{
-		BasicExperiment.LogFunctionSignature("TSIExchanger","executePostRun", arguments, false);	
+		BasicExperiment.LogFunctionSignature("TSIExchanger","executeTimePoint", arguments, false);
 	}
 
 	RealTimeFeedback.__proto__.disconnected = function()
@@ -68,7 +58,6 @@ BasicExperiment.__proto__.preExperimentStateChanged = _.wrap(BasicExperiment.__p
 		try 
 		{	
 			RealTimeFeedback.TSIExchangerObject.executeTimePoint.connect(RealTimeFeedback, RealTimeFeedback.executeTimePoint);  
-			RealTimeFeedback.TSIExchangerObject.executePostRun.connect(RealTimeFeedback, RealTimeFeedback.executePostRun);  
 			RealTimeFeedback.TSIExchangerObject.disconnected.connect(RealTimeFeedback, RealTimeFeedback.disconnected);  
 			RealTimeFeedback.TSIExchangerObject.connected.connect(RealTimeFeedback, RealTimeFeedback.connected);  
 			RealTimeFeedback.TSIExchangerObject.connectionError.connect(RealTimeFeedback, RealTimeFeedback.connectionError);  	
@@ -83,7 +72,6 @@ BasicExperiment.__proto__.preExperimentStateChanged = _.wrap(BasicExperiment.__p
 		try 
 		{	
 			RealTimeFeedback.TSIExchangerObject.executeTimePoint.disconnect(RealTimeFeedback, RealTimeFeedback.executeTimePoint);  
-			RealTimeFeedback.TSIExchangerObject.executePostRun.disconnect(RealTimeFeedback, RealTimeFeedback.executePostRun);  
 			RealTimeFeedback.TSIExchangerObject.disconnected.disconnect(RealTimeFeedback, RealTimeFeedback.disconnected);  
 			RealTimeFeedback.TSIExchangerObject.connected.disconnect(RealTimeFeedback, RealTimeFeedback.connected);  
 			RealTimeFeedback.TSIExchangerObject.connectionError.disconnect(RealTimeFeedback, RealTimeFeedback.connectionError);  	
