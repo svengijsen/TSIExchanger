@@ -189,7 +189,12 @@ xcopy "$(TargetPath)" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d 
 if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)resources\$(ProjectName)_$(Platform)_$(Configuration).ini" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
-xcopy "$(ProjectDir)scripts\QScriptExample_TSIExchangerPlugin.qs" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+
+xcopy "$(ProjectDir)scripts" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)include\QtScript" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 
 SET PATH=%PATH%;$(QTDIR)\bin
@@ -262,7 +267,12 @@ xcopy "$(TargetPath)" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d 
 if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)resources\$(ProjectName)_$(Platform)_$(Configuration).ini" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
-xcopy "$(ProjectDir)scripts\QScriptExample_TSIExchangerPlugin.qs" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+
+xcopy "$(ProjectDir)scripts" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)include\QtScript" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 
 SET PATH=%PATH%;$(QTDIR)\bin
@@ -294,7 +304,7 @@ echo POSTBUILDSTEP for $(ProjectName) COMPLETED OK
       <PreprocessToFile>false</PreprocessToFile>
       <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -316,7 +326,7 @@ echo POSTBUILDSTEP for $(ProjectName) COMPLETED OK
       <OutputFile>$(ProjectDir)..\Build_MSVC\$(ProjectName)\$(Platform)\$(Configuration)\$(ProjectName)_$(Platform)_$(Configuration).dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
       <ProgramDatabaseFile>
       </ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
@@ -332,7 +342,12 @@ xcopy "$(TargetPath)" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d 
 if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)resources\$(ProjectName)_$(Platform)_$(Configuration).ini" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
-xcopy "$(ProjectDir)scripts\QScriptExample_TSIExchangerPlugin.qs" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+
+xcopy "$(ProjectDir)scripts" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)include\QtScript" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 
 SET PATH=%PATH%;$(QTDIR)\bin
@@ -404,7 +419,12 @@ xcopy "$(TargetPath)" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d 
 if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)resources\$(ProjectName)_$(Platform)_$(Configuration).ini" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
-xcopy "$(ProjectDir)scripts\QScriptExample_TSIExchangerPlugin.qs" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+
+xcopy "$(ProjectDir)scripts" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)include\QtScript" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 
 SET PATH=%PATH%;$(QTDIR)\bin
@@ -441,7 +461,12 @@ xcopy "$(TargetPath)" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d 
 if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)resources\$(ProjectName)_$(Platform)_$(Configuration).ini" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
-xcopy "$(ProjectDir)scripts\QScriptExample_TSIExchangerPlugin.qs" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+
+xcopy "$(ProjectDir)scripts" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)include\QtScript" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 
 SET PATH=%PATH%;$(QTDIR)\bin
@@ -478,7 +503,12 @@ xcopy "$(TargetPath)" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d 
 if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)resources\$(ProjectName)_$(Platform)_$(Configuration).ini" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
-xcopy "$(ProjectDir)scripts\QScriptExample_TSIExchangerPlugin.qs" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+
+xcopy "$(ProjectDir)scripts" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+if errorlevel 1 goto BuildEventFailed
+xcopy "$(ProjectDir)include\QtScript" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 
 SET PATH=%PATH%;$(QTDIR)\bin

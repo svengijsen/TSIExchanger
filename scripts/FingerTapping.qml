@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import BrainStim_QMLExtensions 1.0;
 
 Rectangle
 {
