@@ -1,4 +1,4 @@
-var scriptRootPath = StimulGL.getSelectedScriptFileLocation();
+var scriptRootPath = BrainStim.getActiveDocumentFileLocation();
 var exmlFilePath = scriptRootPath + "/" + "FingerTapping.exml";
 var qmlFilePath = scriptRootPath + "/" + "ActivationBar.qml";
 var StimulusHeightSpan = 1050;
@@ -26,7 +26,7 @@ var tmpBlockID;
 var cLoopStructure_Object0;
 var cBlockStructure_Object0;
 //Construct a new Plugin object
-var TBVExchangerobject = new TBVExchanger();
+var TSIExchangerobject = new TSIExchanger();
 var fMeanROI;
 
 function executePreStep()
@@ -39,7 +39,7 @@ function executePostStep()
 	Log("executePostStep");	
 	MainItem = "functions";
 	functionName = "setActivationLevel";		
-	fMeanROI = TBVExchangerobject.tGetMeanOfROI(0);
+	fMeanROI = TSIExchangerobject.tGetMeanOfROI(0);
 	Log("tGetMeanOfROI() returned: " + fMeanROI);
 	Param1 = fMeanROI;
 	retVal = QML2Viewer_Object_1.invokeQml2Method(MainItem,functionName,Param1);
@@ -81,7 +81,7 @@ function initExperimentObjects()
 function CleanupScript()
 {
 	ConnectDisconnectScriptFunctions(false);
-	Log(TBVExchangerobject.deactivateAutoConnection());
+	Log(TSIExchangerobject.deactivateAutoConnection());
 	functionName = null;
 	MainItem = null;
 	ExperimentManagerObj = null;
@@ -101,8 +101,8 @@ function CleanupScript()
 	cExperimentStructure_Object = null;
 	cLoopStructure_Object0 = null;
 	cBlockStructure_Object0 = null;
-	TBVExchangerobject = null;
-	StimulGL.cleanupScript();
+	TSIExchangerobject = null;
+	BrainStim.cleanupScript();
 }
 
 function externalTriggerRecieved()
@@ -203,7 +203,7 @@ function changeStimuli(strText)
 	retVal = QML2Viewer_Object_1.invokeQml2Method(MainItem,functionName,Param1);
 	Log("<<< " + functionName + "(" + Param1 + ") returned: " + retVal + " >>>");
 	
-	//var fMeanROI = TBVExchangerobject.tGetMeanOfROI(0);
+	//var fMeanROI = TSIExchangerobject.tGetMeanOfROI(0);
 	//Log("tGetMeanOfROI() returned: " + fMeanROI);
 	//functionName = "setActivationLevel";
 	//Param1 = fMeanROI;
@@ -276,12 +276,12 @@ function ConnectDisconnectScriptFunctions(Connect)
 			QML2Viewer_Object_1.NewSourceLoaded.connect(this,this.NewQMLSourceLoaded);
 			cExperimentStructure_Object.externalTriggerRecieved.connect(this, externalTriggerRecieved);
 			
-			TBVExchangerobject.executePreStep.connect(this, this.executePreStep);  
-			TBVExchangerobject.executePostStep.connect(this, this.executePostStep);  
-			TBVExchangerobject.executePostRun.connect(this, this.executePostRun);  
-			TBVExchangerobject.disconnected.connect(this, this.disconnected);  
-			TBVExchangerobject.connected.connect(this, this.connected);  
-			TBVExchangerobject.connectionError.connect(this, this.connectionError);  			
+			TSIExchangerobject.executePreStep.connect(this, this.executePreStep);  
+			TSIExchangerobject.executePostStep.connect(this, this.executePostStep);  
+			TSIExchangerobject.executePostRun.connect(this, this.executePostRun);  
+			TSIExchangerobject.disconnected.connect(this, this.disconnected);  
+			TSIExchangerobject.connected.connect(this, this.connected);  
+			TSIExchangerobject.connectionError.connect(this, this.connectionError);  			
 		} 
 		catch (e) 
 		{
@@ -298,12 +298,12 @@ function ConnectDisconnectScriptFunctions(Connect)
 			QML2Viewer_Object_1.NewSourceLoaded.disconnect(this,this.NewQMLSourceLoaded);
 			cExperimentStructure_Object.externalTriggerRecieved.disconnect(this, externalTriggerRecieved);
 			
-			TBVExchangerobject.executePreStep.disconnect(this, this.executePreStep);  
-			TBVExchangerobject.executePostStep.disconnect(this, this.executePostStep);  
-			TBVExchangerobject.executePostRun.disconnect(this, this.executePostRun);  
-			TBVExchangerobject.disconnected.disconnect(this, this.disconnected);  
-			TBVExchangerobject.connected.disconnect(this, this.connected);  
-			TBVExchangerobject.connectionError.disconnect(this, this.connectionError);  			
+			TSIExchangerobject.executePreStep.disconnect(this, this.executePreStep);  
+			TSIExchangerobject.executePostStep.disconnect(this, this.executePostStep);  
+			TSIExchangerobject.executePostRun.disconnect(this, this.executePostRun);  
+			TSIExchangerobject.disconnected.disconnect(this, this.disconnected);  
+			TSIExchangerobject.connected.disconnect(this, this.connected);  
+			TSIExchangerobject.connectionError.disconnect(this, this.connectionError);  			
 		} 
 		catch (e) 
 		{
@@ -330,7 +330,7 @@ else
 	ExperimentManagerObj.ExperimentStateHasChanged.connect(this, this.ExperimentStateChanged);
 	if(ExperimentManagerObj.setExperimentFileName(exmlFilePath))
 	{
-		Log("activateAutoConnection() = " + TBVExchangerobject.activateAutoConnection());
+		Log("activateAutoConnection() = " + TSIExchangerobject.activateAutoConnection());
 		ExperimentManagerObj.runExperiment();
 	}
 	else
@@ -411,13 +411,13 @@ else
 //	connected = null;
 //	connectionError = null;	
 //	ConnectDisconnectScriptFunctions = null;
-//	TBVExchangerobject = null;
+//	TSIExchangerobject = null;
 //	KeyBoardCaptureObj = null;
 //	KeyCaptureDetectFunction = null;
 //	CleanupScript = null;
 	//Write something to the Log Output Pane so we know that this Function executed successfully.
 //	Log("Finished script cleanup, ready for garbage collection!");
-//	StimulGL.cleanupScript();
+//	BrainStim.cleanupScript();
 //}
 
 
@@ -435,37 +435,37 @@ else
 //method == 2 --> KeyPressedReleased
 
 //	Basic Project Functions
-//Log(TBVExchangerobject.tGetCurrentTimePoint());
-//Log(TBVExchangerobject.tGetExpectedNrOfTimePoints());
-//Log(TBVExchangerobject.tGetDimsOfFunctionalData());
-//Log(TBVExchangerobject.tGetProjectName());
-//Log(TBVExchangerobject.tGetWatchFolder());
-//Log(TBVExchangerobject.tGetTargetFolder());
-//Log(TBVExchangerobject.tGetFeedbackFolder());
+//Log(TSIExchangerobject.tGetCurrentTimePoint());
+//Log(TSIExchangerobject.tGetExpectedNrOfTimePoints());
+//Log(TSIExchangerobject.tGetDimsOfFunctionalData());
+//Log(TSIExchangerobject.tGetProjectName());
+//Log(TSIExchangerobject.tGetWatchFolder());
+//Log(TSIExchangerobject.tGetTargetFolder());
+//Log(TSIExchangerobject.tGetFeedbackFolder());
 //	Protocol, DM, GLM Functions:
-//Log(TBVExchangerobject.tGetCurrentProtocolCondition());
-//Log(TBVExchangerobject.tGetFullNrOfPredictors());
-//Log(TBVExchangerobject.tGetCurrentNrOfPredictors());
-//Log(TBVExchangerobject.tGetNrOfConfoundPredictors());
-//Log(TBVExchangerobject.tGetValueOfDesignMatrix(1, 2));
-//Log(TBVExchangerobject.tGetNrOfContrasts());
+//Log(TSIExchangerobject.tGetCurrentProtocolCondition());
+//Log(TSIExchangerobject.tGetFullNrOfPredictors());
+//Log(TSIExchangerobject.tGetCurrentNrOfPredictors());
+//Log(TSIExchangerobject.tGetNrOfConfoundPredictors());
+//Log(TSIExchangerobject.tGetValueOfDesignMatrix(1, 2));
+//Log(TSIExchangerobject.tGetNrOfContrasts());
 //	ROI Functions
-//Log(TBVExchangerobject.tGetNrOfROIs());
-//Log(TBVExchangerobject.tGetMeanOfROI(2));
-//Log(TBVExchangerobject.tGetNrOfVoxelsOfROI(2));
-//Log(TBVExchangerobject.tGetBetaOfROI(1,2));
-//Log(TBVExchangerobject.tGetCoordsOfVoxelOfROI(1, 2));
-//Log(TBVExchangerobject.tGetAllCoordsOfVoxelsOfROI(1));
+//Log(TSIExchangerobject.tGetNrOfROIs());
+//Log(TSIExchangerobject.tGetMeanOfROI(2));
+//Log(TSIExchangerobject.tGetNrOfVoxelsOfROI(2));
+//Log(TSIExchangerobject.tGetBetaOfROI(1,2));
+//Log(TSIExchangerobject.tGetCoordsOfVoxelOfROI(1, 2));
+//Log(TSIExchangerobject.tGetAllCoordsOfVoxelsOfROI(1));
 //	Volume Data Access Functions
-//Log(TBVExchangerobject.tGetValueOfVoxelAtTime(1,2,3,4));
-//Log(TBVExchangerobject.tGetTimeCourseData(1));
-//Log(TBVExchangerobject.tGetRawTimeCourseData(1));
-//Log(TBVExchangerobject.tGetBetaOfVoxel(1,2,3,4));
-//Log(TBVExchangerobject.tGetBetaMaps());
-//Log(TBVExchangerobject.tGetMapValueOfVoxel(1,2,3,4));// {return tbvNetwIntFace->tGetMapValueOfVoxel(map, x, y, z);};
-//Log(TBVExchangerobject.tGetContrastMaps());
-//Log(TBVExchangerobject.activateAutoConnection());
-//Log(TBVExchangerobject.connectToServer("127.0.0.1",80));
-//Log(TBVExchangerobject.disconnectFromServer());
+//Log(TSIExchangerobject.tGetValueOfVoxelAtTime(1,2,3,4));
+//Log(TSIExchangerobject.tGetTimeCourseData(1));
+//Log(TSIExchangerobject.tGetRawTimeCourseData(1));
+//Log(TSIExchangerobject.tGetBetaOfVoxel(1,2,3,4));
+//Log(TSIExchangerobject.tGetBetaMaps());
+//Log(TSIExchangerobject.tGetMapValueOfVoxel(1,2,3,4));// {return tbvNetwIntFace->tGetMapValueOfVoxel(map, x, y, z);};
+//Log(TSIExchangerobject.tGetContrastMaps());
+//Log(TSIExchangerobject.activateAutoConnection());
+//Log(TSIExchangerobject.connectToServer("127.0.0.1",80));
+//Log(TSIExchangerobject.disconnectFromServer());
 
 //CleanupScript();

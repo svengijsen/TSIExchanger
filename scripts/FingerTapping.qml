@@ -7,6 +7,18 @@ Rectangle
 	objectName: "rootObjectName"	
 	color: "black" //Make it transparant
 
+//	CustomProgressBar 
+//	{
+//		id: progress
+//		x: page.width / 2 - width/2
+//		y: page.height / 8
+		//anchors.centerIn: progressSpinner
+//		width: page.height / 5
+//		height: page.height / 4
+//		color: "yellow"
+//		value: 0.8
+//	}
+	
 	Text
 	{
 		id: someText
@@ -18,16 +30,16 @@ Rectangle
 		color: "white"
 	}
 
-    Text
-    {
-        id: numText
-        //anchors.centerIn: parent
-        text: "0"
-        font.bold: true
-        font.family: "Helvetica"
-        font.pointSize: 26
-        color: "red"
-    }
+	Text
+	{
+		id: numText
+		//anchors.centerIn: parent
+		text: "0"
+		font.bold: true
+		font.family: "Helvetica"
+		font.pointSize: 26
+		color: "red"
+	}
 
 	Item
 	{
