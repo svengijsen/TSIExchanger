@@ -192,8 +192,8 @@ if errorlevel 1 goto BuildEventFailed
 
 xcopy "$(ProjectDir)scripts" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
-xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
-if errorlevel 1 goto BuildEventFailed
+REM xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+REM if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)include\QtScript" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 
@@ -270,8 +270,8 @@ if errorlevel 1 goto BuildEventFailed
 
 xcopy "$(ProjectDir)scripts" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
-xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
-if errorlevel 1 goto BuildEventFailed
+REM xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+REM if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)include\QtScript" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 
@@ -345,8 +345,8 @@ if errorlevel 1 goto BuildEventFailed
 
 xcopy "$(ProjectDir)scripts" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
-xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
-if errorlevel 1 goto BuildEventFailed
+REM xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+REM if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)include\QtScript" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 
@@ -422,8 +422,8 @@ if errorlevel 1 goto BuildEventFailed
 
 xcopy "$(ProjectDir)scripts" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
-xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
-if errorlevel 1 goto BuildEventFailed
+REM xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+REM if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)include\QtScript" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 
@@ -464,8 +464,8 @@ if errorlevel 1 goto BuildEventFailed
 
 xcopy "$(ProjectDir)scripts" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
-xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
-if errorlevel 1 goto BuildEventFailed
+REM xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+REM if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)include\QtScript" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 
@@ -506,8 +506,8 @@ if errorlevel 1 goto BuildEventFailed
 
 xcopy "$(ProjectDir)scripts" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
-xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
-if errorlevel 1 goto BuildEventFailed
+REM xcopy "$(ProjectDir)scripts\images" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
+REM if errorlevel 1 goto BuildEventFailed
 xcopy "$(ProjectDir)include\QtScript" "$(ProjectDir)\build\$(Platform)\$(Configuration)\" /i /d /y
 if errorlevel 1 goto BuildEventFailed
 

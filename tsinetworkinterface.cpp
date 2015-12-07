@@ -607,3 +607,9 @@ void TSINetworkInterface::writeError(QAbstractSocket::SocketError Error)
      }
 
  }
+
+bool TSINetworkInterface::setAutoReconnect(bool setting)
+{
+	reConnect = setting;
+	return true;
+}

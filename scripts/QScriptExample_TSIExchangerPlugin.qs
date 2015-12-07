@@ -11,32 +11,7 @@ function KeyCaptureDetectFunction(keyCode)
 	if(keyCode == 27)//escape key
 	{
 		KeyBoardCaptureObj.StopCaptureThread();
-		CleanupScript();//escape keyt
-	}	
-		//var temp = TSIExchangerobject.tGetCurrentTimePoint();
-	if(keyCode == 84)//T
-	{
-		var temp = TSIExchangerobject.tGetCurrentTimePoint()-1;
-		Log(temp);
-//		Log(TSIExchangerobject.tGetNrOfChannels());
-//		Log(TSIExchangerobject.tGetValuesFeedbackFolder());
-//		Log(TSIExchangerobject.tGetImagesFeedbackFolder());
-//		Log(TSIExchangerobject.tGetNrOfSelectedChannels());
-//		Log(TSIExchangerobject.tGetSelectedChannels());
-//		Log(TSIExchangerobject.tGetRawDataScaleFactor());
-//		Log(TSIExchangerobject.tGetRawDataWL1(0,temp));
-//		Log(TSIExchangerobject.tGetRawDataWL2(0,temp));
-//		Log(TSIExchangerobject.tIsDataOxyDeoxyConverted());
-		Log(TSIExchangerobject.tGetDataOxy(0,temp));
-		//for(var i=0;i<TSIExchangerobject.tGetNrOfChannels();i++)
-			//Log(TSIExchangerobject.tGetDataDeoxy(i,20))
-		
-//		for(var i=0;i<TSIExchangerobject.tGetCurrentTimePoint()-1;i++)
-//			Log(TSIExchangerobject.tGetDataDeoxy(0,i))
-
-		Log(tempos);
-		
-		Log("");
+		CleanupScript();//escape key
 	}
 }
 
@@ -45,8 +20,7 @@ function CleanupScript() //Cleanup the script
 	//Disconnect the signal/slots
 	ConnectDisconnectScriptFunctions(false);
 	//Set all functions and constructed objects to null
-	executePreStep = null;
-	executePostStep = null;
+	executeTimePoint = null;
 	executePostRun = null;
 	disconnected = null;
 	connected = null;
@@ -58,7 +32,7 @@ function CleanupScript() //Cleanup the script
 	CleanupScript = null;
 	//Write something to the Log Output Pane so we know that this Function executed successfully.
 	Log("Finished script cleanup, ready for garbage collection!");
-	StimulGL.cleanupScript();
+	BrainStim.cleanupScript();
 }
 
 function ConnectDisconnectScriptFunctions(Connect)
@@ -70,8 +44,7 @@ function ConnectDisconnectScriptFunctions(Connect)
 		try 
 		{	
 			KeyBoardCaptureObj.CaptureThreadKeyPressed.connect(this, this.KeyCaptureDetectFunction);
-			TSIExchangerobject.executePreStep.connect(this, this.executePreStep);  
-			TSIExchangerobject.executeTimePoint.connect(this, this.executePostStep);  
+			TSIExchangerobject.executeTimePoint.connect(this, this.executeTimePoint);  
 			TSIExchangerobject.executePostRun.connect(this, this.executePostRun);  
 			TSIExchangerobject.disconnected.connect(this, this.disconnected);  
 			TSIExchangerobject.connected.connect(this, this.connected);  
@@ -88,8 +61,7 @@ function ConnectDisconnectScriptFunctions(Connect)
 		try 
 		{	
 			KeyBoardCaptureObj.CaptureThreadKeyPressed.disconnect(this, this.KeyCaptureDetectFunction);
-			TSIExchangerobject.executePreStep.disconnect(this, this.executePreStep);  
-			TSIExchangerobject.executeTimePoint.disconnect(this, this.executePostStep);  
+			TSIExchangerobject.executeTimePoint.disconnect(this, this.executeTimePoint);  
 			TSIExchangerobject.executePostRun.disconnect(this, this.executePostRun);  
 			TSIExchangerobject.disconnected.disconnect(this, this.disconnected);  
 			TSIExchangerobject.connected.disconnect(this, this.connected);  
@@ -102,15 +74,9 @@ function ConnectDisconnectScriptFunctions(Connect)
 	}	
 }
 
-function executePreStep()
+function executeTimePoint(timePoint)
 {
-	Log("executePreStep");
-}
-
-function executePostStep(timePoint)
-{
-	//Log("executePostStep");	
-	Log(TSIExchangerobject.tGetDataOxy(0,timePoint-1));
+	Log("executeTimePoint");	
 }
 
 function executePostRun()

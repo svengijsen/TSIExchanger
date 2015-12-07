@@ -49,7 +49,7 @@ public:
 	bool isConnected();
 
 	bool setAutoConnection(bool setting);
-
+	bool setAutoReconnect(bool setting);
 private:
 	quint16 nDefaultPort;
 	QUdpSocket *udpSocket;

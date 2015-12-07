@@ -94,3 +94,13 @@ bool TSIExchanger::deactivateAutoConnection()
 {
 	return tsiNetwIntFace->setAutoConnection(false);
 }
+
+bool TSIExchanger::activateAutoReconnect()
+{
+	return tsiNetwIntFace->setAutoReconnect(true);
+}
+
+bool TSIExchanger::deactivateAutoReconnect()
+{
+	return tsiNetwIntFace->setAutoReconnect(false);
+}
