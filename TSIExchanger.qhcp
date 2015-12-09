@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<QHelpCollectionProject version="1.0">
+<!--doc-version-qhelp-begin-->
+<!-- Please do not edit the below line(s) manually, see DocumentVersioning.qs (1511915753),BrainStim version 1.0.0.1, Plugin version 1.0.0.1-->
+  <assistant>
+		<title>TSIExchanger plugin v1.0.0.1</title>
+    <applicationIcon>TSIExchanger/images/logo.jpg</applicationIcon>
+    <cacheDirectory>svengijsen/BrainStim/Plugins/TSIExchanger</cacheDirectory>
+    <startPage>qthelp://com.svengijsen.brainstim/doc/plugins/TSIExchanger/index.html</startPage>
+    <aboutMenuText>
+        <text>About TSIExchanger</text>
+    </aboutMenuText>
+    <aboutDialog>
+        <file>TSIExchanger/additional/about.txt</file>
+        <icon>TSIExchanger/images/logo.jpg</icon>
+    </aboutDialog>
+    <enableDocumentationManager>false</enableDocumentationManager>
+    <enableAddressBar>false</enableAddressBar>
+    <enableFilterFunctionality>false</enableFilterFunctionality>
+  </assistant>
+  <docFiles>
+  	<generate>
+    	<file>
+      	<input>TSIExchanger.qhp</input>
+        <output>TSIExchanger.qch</output>
+      </file>
+    </generate>
+    <register>
+    	<file>TSIExchanger.qch</file>
+    </register>
+  </docFiles>
+	</QHelpCollectionProject>
+<!--doc-version-qhelp-end-->
