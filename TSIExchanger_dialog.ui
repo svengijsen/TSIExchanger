@@ -14,7 +14,7 @@
    <string>TSIExchanger_Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
+   <item row="0" column="0">
     <layout class="QHBoxLayout">
      <property name="spacing">
       <number>6</number>
@@ -59,18 +59,6 @@
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="0" column="0">
-    <widget class="QTextBrowser" name="textBrowser">
-     <property name="html">
-      <string notr="true"></string>
-     </property>
-     <property name="source">
-      <url>
-       <string></string>
-      </url>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>

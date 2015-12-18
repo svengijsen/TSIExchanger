@@ -18,7 +18,7 @@
 #include "TSIExchanger.h"
 #include <QDebug>
 
-QScriptValue TSIExchanger::ctor__extensionname(QScriptContext* context, QScriptEngine* engine)
+QScriptValue TSIExchanger::ctor_TSIExchanger(QScriptContext* context, QScriptEngine* engine)
 {
 	Q_UNUSED(context);
 	//this function gets called first whenever a new object is constructed trough the script
@@ -83,6 +83,81 @@ bool TSIExchanger::initialize(bool autoConnect, bool autoReconnect)
 		connect(tsiNetwIntFace,&TSINetworkInterface::connectionError,this,&TSIExchanger::connectionError);
 	//}
 	return true;
+}
+
+int TSIExchanger::tGetCurrentTimePoint()
+{ 
+	return tsiNetwIntFace->tGetCurrentTimePoint();
+}
+
+int TSIExchanger::tGetNrOfChannels()
+{
+	return tsiNetwIntFace->tGetNrOfChannels();
+}
+
+QString TSIExchanger::tGetValuesFeedbackFolder()
+{
+	return tsiNetwIntFace->tGetValuesFeedbackFolder();
+}
+
+QString TSIExchanger::tGetImagesFeedbackFolder()
+{
+	return tsiNetwIntFace->tGetImagesFeedbackFolder();
+}
+
+int TSIExchanger::tGetNrOfSelectedChannels()
+{
+	return tsiNetwIntFace->tGetNrOfSelectedChannels();
+}
+
+QList<int> TSIExchanger::tGetSelectedChannels()
+{
+	return tsiNetwIntFace->tGetSelectedChannels();
+}
+
+float TSIExchanger::tGetRawDataScaleFactor()
+{
+	return tsiNetwIntFace->tGetRawDataScaleFactor();
+}
+
+float TSIExchanger::tGetRawDataWL1(int channel, int timePoint)
+{
+	return tsiNetwIntFace->tGetRawDataWL1(channel, timePoint);
+}
+
+float TSIExchanger::tGetRawDataWL2(int channel, int timePoint)
+{
+	return tsiNetwIntFace->tGetRawDataWL2(channel, timePoint);
+}
+
+int TSIExchanger::tIsDataOxyDeoxyConverted()
+{
+	return tsiNetwIntFace->tIsDataOxyDeoxyConverted();
+}
+
+float TSIExchanger::tGetOxyDataScaleFactor()
+{
+	return tsiNetwIntFace->tGetOxyDataScaleFactor();
+}
+
+float TSIExchanger::tGetDataOxy(int channel, int timePoint)
+{
+	return tsiNetwIntFace->tGetDataOxy(channel, timePoint);
+}
+
+float TSIExchanger::tGetDataDeoxy(int channel, int timePoint)
+{
+	return tsiNetwIntFace->tGetDataDeoxy(channel, timePoint);
+}
+
+bool TSIExchanger::connectToServer(QString sIPAddress, int port)
+{
+	return tsiNetwIntFace->connectToServer(sIPAddress.toLatin1().data(), (quint16)port);
+}
+
+bool TSIExchanger::disconnectFromServer()
+{
+	return tsiNetwIntFace->disconnectFromServer();
 }
 
 bool TSIExchanger::activateAutoConnection()

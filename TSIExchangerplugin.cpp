@@ -42,7 +42,7 @@ int TSIExchangerPlugin::ConfigureScriptEngine(QScriptEngine &engine)
 {
 	QScriptValue TSIExchangerProto = engine.newQObject(TSIExchangerObject);
 	engine.setDefaultPrototype(qMetaTypeId<TSIExchanger*>(), TSIExchangerProto);
-	QScriptValue TSIExchangerCtor = engine.newFunction(TSIExchanger::ctor__extensionname, TSIExchangerProto);
+	QScriptValue TSIExchangerCtor = engine.newFunction(TSIExchanger::ctor_TSIExchanger, TSIExchangerProto);
 	engine.globalObject().setProperty(PLUGIN_SCRIPTOBJECT_NAME, TSIExchangerCtor);
 	int nMetaType = qRegisterMetaType<TSIExchanger>(PLUGIN_SCRIPTOBJECT_NAME);
 	//FinalizeScriptObjectScriptContext(engine, TSIExchangerObject);

@@ -53,6 +53,7 @@ private:
 	TSIExchanger_Dialog *TSIExchangerDiagObject;
 
 public slots:
+	bool HasGUI() { return false; };
     bool ShowGUI();
 	bool IsCompatible() {return PluginInterface::IsCompatible();};// ExtensionInterface PluginInterface::IsCompatible();};
 	//QStringList GetAdditionalFileExtensions() {return (QStringList() << "TSIExchanger files (*.TSIExchanger);;");};

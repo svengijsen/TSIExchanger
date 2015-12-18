@@ -145,9 +145,6 @@
     <ClCompile Include="..\Build_MSVC\Qt\x64\Template\Moc\moc_TSIExchanger.cpp">
       <Filter>Generated Files\Template_x64</Filter>
     </ClCompile>
-    <ClCompile Include="..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\GeneratedFiles\qrc_rsc.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\GeneratedFiles\qrc_TSIExchanger.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
@@ -173,9 +170,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="rsc.qrc">
-      <Filter>Resource Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="TSIExchanger.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -210,31 +204,5 @@
     <None Include="resources\TSIExchangerplugin_x64_Release.ini">
       <Filter>Resource Files</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="html\NetworkPlugin_guide_files\image001.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="html\NetworkPlugin_guide_files\image002.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="html\NetworkPlugin_guide_files\image003.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="html\NetworkPlugin_guide_files\image004.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="html\NetworkPlugin_guide_files\image005.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="html\NetworkPlugin_guide_files\image006.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="html\NetworkPlugin_guide_files\image007.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="html\NetworkPlugin_guide_files\image008.png">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
 </Project>
